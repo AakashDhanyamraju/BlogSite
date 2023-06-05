@@ -17,12 +17,46 @@
                 <input id="author" name="author" class="m-3" placeholder="Enter author" required>
                 <!-- <input id="content" placeholder="Enter content" > -->
                 <textarea id="content" name="content" class="m-3"  rows="25" cols="50" required></textarea>
-                <button type="submit" id="subButton" class="m-3" >Submit</button>
+                <!-- <input type="file" class="m-3"  onchange="document.getElementById('image').value = window.URL.createObjectURL(this.files[0])" > -->
+                
+                <!-- <input type="text"  readonly >  -->
+                <input type="file" class="m-3"  onchange="convertToBase64(this)" >
+                <input type='text' name="image" id="image" required readonly hidden ></input>
+                <button type="submit" id="subButton" class="m-3">Submit</button>
             </form>
 
         </div>
         
         
     </div>
+
+    <script>
+        function convertToBase64(input) {
+            const selectedFile = input.files[0];
+
+            if (selectedFile) {
+                const reader = new FileReader();
+
+                reader.onload = function () {
+                const base64String = reader.result.split(',')[1];
+                document.getElementById('image').value = base64String;
+                };
+
+                reader.readAsDataURL(selectedFile);
+            }
+            }
+
+        function getBase64(file) {
+
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function () {
+                return reader.result;
+            };
+            reader.onerror = function (error) {
+                console.log('Error: ', error);
+            };
+        }
+    </script>
 </body>
 </html>

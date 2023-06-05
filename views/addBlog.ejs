@@ -20,7 +20,7 @@
                 <!-- <input type="file" class="m-3"  onchange="document.getElementById('image').value = window.URL.createObjectURL(this.files[0])" > -->
                 
                 <!-- <input type="text"  readonly >  -->
-                <input type="file" class="m-3"  onchange="convertToBase64(this)" >
+                <input type="file" class="m-3" accept="image/png, image/jpeg, image/jpg" onchange="convertToBase64(this)" >
                 <input type='text' name="image" id="image" required readonly hidden ></input>
                 <button type="submit" id="subButton" class="m-3">Submit</button>
             </form>

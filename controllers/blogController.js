@@ -132,7 +132,7 @@ exports.createBlog = async (req, res) => {
     //    return res.json({message: "title exists"})
         const htmlContent = marked(req.body.content)
     //   }
-        const data = { title: req.body.title, author: req.body.author, content: htmlContent, addedBy: req.user}
+        const data = { title: req.body.title, author: req.body.author, image: req.body.image ,content: htmlContent, addedBy: req.user}
     // const data = req.body
 
 

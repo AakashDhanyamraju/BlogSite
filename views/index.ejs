@@ -32,15 +32,22 @@
             
                 <% data.length &&  data.map(blog => { %>
                     
-                    <div class="card" >
-                        <a href="/blogs/<%= blog._id %>">
-                            <h2> <%= blog.title %> </h2>
-                        </a>
-                            <h5><i>by <%= blog.author %> </i></h5> 
-                            <% const startIndex = blog.content.indexOf('<p>') + 3; %>
-                               <% const endIndex = blog.content.indexOf('</p>'); %>
-                            
-                            <p> <%= blog.content.substring(startIndex, endIndex)%> ... </p> 
+                    <div class="card" style="display: flex; justify-content: space-between;" >
+                        <div>
+                            <a href="/blogs/<%= blog._id %>">
+                                <h2> <%= blog.title %> </h2>
+                            </a>
+                                <h5><i>by <%= blog.author %> </i></h5> 
+                                <% const startIndex = blog.content.indexOf('<p>') + 3; %>
+                                   <% const endIndex = blog.content.indexOf('</p>'); %>
+                                
+                                <p> <%= blog.content.substring(startIndex, endIndex)%> ... </p> 
+
+                        </div>
+                        <div>
+                            <img width="200px" src="data:image/png;base64,<%= blog.image %>" >
+                        </div>
+                        
                     </div>
                 <% }) %>
                 <!-- <h2>TITLE HEADING</h2>

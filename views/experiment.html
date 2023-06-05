@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Center the views and button */
+        #views-wrapper {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+        }
+      
+        #viewOne,
+        #viewTwo {
+          background-color: #f2f2f2;
+          padding: 20px;
+          border-radius: 5px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+          text-align: center;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      
+        /* Add a fade-in animation */
+        .fade-in {
+          opacity: 0;
+          animation: fadeIn 1s forwards;
+        }
+      
+        @keyframes fadeIn {
+          to {
+            opacity: 1;
+          }
+        }
+      
+        /* Add a slide-in animation */
+        .slide-in-left {
+          opacity: 0;
+          transform: translateX(-100%);
+          animation: slideInLeft 0.5s forwards;
+        }
+      
+        .slide-in-right {
+          opacity: 0;
+          transform: translateX(100%);
+          animation: slideInRight 0.5s forwards;
+        }
+      
+        @keyframes slideInLeft {
+          to {
+            opacity: 1;
+            transform: translateX(0%);
+          }
+        }
+      
+        @keyframes slideInRight {
+          to {
+            opacity: 1;
+            transform: translateX(0%);
+          }
+        }
+      
+        /* Add a slide-out animation */
+        .slide-out-left {
+          opacity: 1;
+          transform: translateX(0%);
+          animation: slideOutLeft 0.5s forwards;
+        }
+      
+        .slide-out-right {
+          opacity: 1;
+          transform: translateX(0%);
+          animation: slideOutRight 0.5s forwards;
+        }
+      
+        @keyframes slideOutLeft {
+          to {
+            opacity: 0;
+            transform: translateX(-100%);
+          }
+        }
+      
+        @keyframes slideOutRight {
+          to {
+            opacity: 0;
+            transform: translateX(100%);
+          }
+        }
+      </style>
+</head>
+<body>
+    <!-- The two views -->
+    <div id="views-wrapper">
+        <!-- The two views -->
+        <div id="viewOne" class="fade-in slide-in-left">
+          <h1>View One</h1>
+          <p>This is view one.</p>
+        </div>
+      
+        <div id="viewTwo" class="fade-in slide-in-right" style="display: none;">
+          <h1>View Two</h1>
+          <p>This is view two.</p>
+        </div>
+    </div>
+      
+      <!-- The button to trigger the view transition -->
+    <button onclick="transitionViews()" class="slide-in-bottom">Go to View Two</button>
+  
+  <script>
+    // Get references to the views
+    const viewOne = document.getElementById('viewOne');
+    const viewTwo = document.getElementById('viewTwo');
+  
+    // Define the view transition function
+    function transitionViews() {
+      // Determine which view is currently displayed
+      if (viewOne.style.display !== 'none') {
+        // Hide view one and show view two
+        viewOne.classList.remove('slide-in-left');
+        viewOne.classList.add('slide-out-left');
+  
+        viewTwo.classList.remove('slide-in-right');
+        viewTwo.classList.add('slide-in-left', 'fade-in');
+        viewTwo.style.display = 'block';
+      } else {
+        // Hide view two and show view one
+        viewTwo.classList.remove('slide-in-right');
+        viewTwo.classList.add('slide-out-right');
+  
+        viewOne.classList.remove('slide-in-left');
+        viewOne.classList.add('slide-in-right', 'fade-in');
+        viewOne.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>

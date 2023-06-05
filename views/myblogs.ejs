@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head.ejs'); %>    
+<body>
+
+    <div>
+        <%- include('./partials/navbar.ejs'); %>        
+        <!-- <div>
+            <h2>Blogs</h2>
+            <% if(!data.length){ %>
+                <p>No data to show</p>
+            <% } %>
+
+            <% data.length &&  data.map(blog => { %>
+                <a href="/blogs/<%= blog._id %>">
+                    <h3> <%= blog.title %> </h3>
+                </a>
+                    <p> <%= blog.author %> </p> 
+                    <p> <%= blog.content %> </p> 
+            <% }) %>
+            
+            
+        </div> -->
+    </div>
+    <div class="row">
+        <div class="">
+            <div class="card">
+                <h2>My Blogs</h2>
+            </div>
+            <% if(!data.length){ %>
+                <div class="card">
+                    <p>No data to show</p>
+                </div>
+                
+            <% } %>
+            
+                    
+            
+                <% data.length &&  data.map(blog => { %>
+                    
+                    <div class="card" >
+                        <a href="/blogs/<%= blog._id %>">
+                            <h2> <%= blog.title %> </h2>
+                        </a>
+                        <h5>on <%= blog.createdAt %></h5>
+                            <h5>by <%= blog.author %>  </h5> 
+                            <!-- <h5></h5> -->
+                            <% const startIndex = blog.content.indexOf('<p>') + 3; %>
+                               <% const endIndex = blog.content.indexOf('</p>'); %>
+                            <p> <%= blog.content.substring(startIndex, endIndex)%> ... </p> 
+                    </div>
+                <% }) %>
+                
+        </div>
+    </div>
+
+    <script>
+  
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head.ejs'); %>    
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@2.4.0/dist/purify.min.js"></script>
+
+
+    <div>
+        <%- include('./partials/navbar.ejs'); %>        
+        <div>
+            <!-- <form method="DELETE" action="/blogs/<%= data._id %>">
+                <h2>Blog <%= data.title  %></h2>
+                <h3> <%= data.title %> </h3>
+                <p> <%= data.author %> </p> 
+                <p> <%= data.content %> </p>
+                <button type="submit" >Delete Blog</button>
+            </form> -->
+
+                <!-- <h2>Blog <%= data.title %></h2>
+                <p id="id" ><%= data._id %></p>
+                <h3> <%= data.title %> </h3>
+                <p> <%= data.author %> </p> 
+                <p> <%= data.content %> </p>
+
+                    <% if(data.addedBy === id || admin) {%>
+
+                        <a class="delete" href="#" data-doc = "<%= data._id %>" >Delete Blog</button>
+                    <% } %> -->
+
+                    <div class="row">
+                        <div class="">
+                                    <div class="card" >
+                                        
+                                            <h2> <%= data.title %> </h2>
+                                       
+                                            <h5><i>by <%= data.author %></i> </h5> 
+                                            <div id="content">
+                                                <%= data.content %>
+                                            </div>
+                                            
+                                            <!-- <p > <%= data.content %> </p>  -->
+                                            <% if(data.addedBy === id || admin) {%>
+
+                                                <a class="delete" href="#" data-doc = "<%= data._id %>" >Delete Blog</button>
+                                            <% } %>
+                                    </div>
+                        </div>
+                    </div>
+
+
+        </div>
+    </div>
+
+
+    <script>
+
+        // async function deleteBlog(){
+        //     const _id = document.getElementById("id").value
+        //     const url = `http://localhost:3000/blogs/${_id}`
+
+        //     fetch("http://localhost:3000/blogs/:_id", {
+        //     method: "DELETE",
+        //     headers: {
+        //     "Content-Type": "application/html"
+        //     },
+        //     // body: employeeData.json()
+        // })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //     console.log(data);
+        //     alert(data.message);
+        //     fetchEmployees()
+        //     // You can perform additional actions or update the UI here
+        //     })
+
+
+
+        // }
+        function decodeEntities(encodedString) {
+            const textArea = document.createElement('textarea');
+            textArea.innerHTML = encodedString;
+            return textArea.value;
+    }
+
+    // Get the blog content from the server
+        const content = `<%= data.content %>`;
+    
+    // Set the decoded content to the 'content' div
+         document.getElementById('content').innerHTML = decodeEntities(content);
+
+        const deleteBtn = document.querySelector('a.delete')
+
+        deleteBtn.addEventListener('click', (e) => {
+            const url = `/blogs/${deleteBtn.dataset.doc}`
+
+            fetch(url, {
+                method: 'DELETE', 
+
+            }).then(response => 
+                response.json()
+                // alert(result.message)
+                // window.location.href = '/'
+            ).then(data => {
+                alert(data.message)
+                window.location.href = '/'
+
+                
+
+            }).catch(err => alert(err))
+
+        })
+
+
+
+        
+    </script>
+    
+</body>
+</html>

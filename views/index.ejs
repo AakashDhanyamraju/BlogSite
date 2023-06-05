@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head.ejs'); %>    
+<body>
+
+    <div>
+        <%- include('./partials/navbar.ejs'); %>        
+        <!-- <div>
+            <h2>Blogs</h2>
+            <% if(!data.length){ %>
+                <p>No data to show</p>
+            <% } %>
+
+            <% data.length &&  data.map(blog => { %>
+                <a href="/blogs/<%= blog._id %>">
+                    <h3> <%= blog.title %> </h3>
+                </a>
+                    <p> <%= blog.author %> </p> 
+                    <p> <%= blog.content %> </p> 
+            <% }) %>
+            
+            
+        </div> -->
+    </div>
+    <div class="row">
+        <div class="">
+            <% if(!data.length){ %>
+                <div class="card">
+                    <p>No data to show</p>
+                </div>
+            <% } %>
+            
+                <% data.length &&  data.map(blog => { %>
+                    
+                    <div class="card" >
+                        <a href="/blogs/<%= blog._id %>">
+                            <h2> <%= blog.title %> </h2>
+                        </a>
+                            <h5><i>by <%= blog.author %> </i></h5> 
+                            <% const startIndex = blog.content.indexOf('<p>') + 3; %>
+                               <% const endIndex = blog.content.indexOf('</p>'); %>
+                            
+                            <p> <%= blog.content.substring(startIndex, endIndex)%> ... </p> 
+                    </div>
+                <% }) %>
+                <!-- <h2>TITLE HEADING</h2>
+                <h5>Title description, Dec 7, 2017</h5>
+                <div class="fakeimg" style="height:200px;">Image</div>
+                <p>Some text..</p>
+                <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p> -->
+             
+        </div>
+    </div>
+
+    <script>
+  
+    </script>
+    
+</body>
+</html>

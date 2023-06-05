@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head.ejs') %>
+
+<body>
+    <%- include('./partials/navbar.ejs') %>
+    <!-- <div>
+        <h2>About</h2>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus, cum soluta! Enim nihil animi nemo cum, dignissimos velit cupiditate nostrum ipsum perferendis sapiente debitis numquam molestiae maxime. Ullam, optio pariatur.</p>
+    </div> -->
+    
+    <div>
+        
+        <div>
+            <form method="POST" class="addblog" action="/add">
+                <input id="title" class="m-3" name="title" placeholder="Enter title" required>
+                <input id="author" name="author" class="m-3" placeholder="Enter author" required>
+                <!-- <input id="content" placeholder="Enter content" > -->
+                <textarea id="content" name="content" class="m-3"  rows="25" cols="50" required></textarea>
+                <button type="submit" id="subButton" class="m-3" >Submit</button>
+            </form>
+
+        </div>
+        
+        
+    </div>
+</body>
+</html>
